@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.matheusjlfm.apiJava.repositories.PedidoRepository;
 import com.matheusjlfm.apiJava.services.exceptions.ObjectNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PedidoService {
@@ -37,6 +38,7 @@ public class PedidoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: "+ id + ", Tipo: " + Pedido.class.getName()));
 	}
 
+	@Transactional
 	public Pedido insert (Pedido obj){
 		obj.setId(null);
 		obj.setInstante(new Date());

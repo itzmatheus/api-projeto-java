@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.matheusjlfm.apiJava.dto.CategoriaDTO;
 import com.matheusjlfm.apiJava.repositories.CategoriaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CategoriaService {
@@ -27,7 +28,8 @@ public class CategoriaService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
-	
+
+	@Transactional
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
 		return repo.save(obj);
@@ -48,7 +50,7 @@ public class CategoriaService {
 			throw new DataIntegrityException("Não é possivel excluir uma categoria que possui produtos");
 		}
 	}
-	
+
 	public List<Categoria> findAll(){
 		return repo.findAll();
 	}
