@@ -56,8 +56,9 @@ public class ApiJavaApplication implements CommandLineRunner {
         Produto p3 = new Produto(null, "Mouse", 80.00);
         Produto p4 = new Produto(null, "Xiaomi MI 8 Lite", 1200.00);
         Produto p5 = new Produto(null, "Xiaomi MI 9 SE", 1900.00);
+        Produto p6 = new Produto(null, "Dell Inspiron 15 3000", 3199.00);
 
-        cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
+        cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3, p6));
         cat2.getProdutos().addAll(Arrays.asList(p2));
         cat7.getProdutos().addAll(Arrays.asList(p4,p5));
 
@@ -67,10 +68,11 @@ public class ApiJavaApplication implements CommandLineRunner {
         p3.getCategorias().addAll(Arrays.asList(cat1));
         p4.getCategorias().addAll(Arrays.asList(cat7));
         p5.getCategorias().addAll(Arrays.asList(cat7));
+        p6.getCategorias().addAll(Arrays.asList(cat1));
 
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5,
                 cat6, cat7));
-        produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+        produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6));
 
         Estado est1 = new Estado(null, "Paraíba");
         Estado est2 = new Estado(null, "São Paulo");
